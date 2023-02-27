@@ -27,8 +27,10 @@ SECRET_KEY = os.getenv(key='SECRET_KEY')
 # django-insecure-1-*iyy=rizxbq&*4$4$+sbe+3)8(oi@gu^6c^sqp4)^946=5=y'
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = bool(os.getenv(key="DEBUG"))
-# DEBUG = True
+#DEBUG = bool(os.getenv(key="DEBUG"))
+
+#DEBUG = False if os.getenv("MY_DEBUG_VARIABLE") == 'False' else True
+DEBUG = True
 ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]'] # Список строк, представляющих имена хоста / домена, которые может обслуживать этот сайт Django
 """
 ['.localhost', '127.0.0.1', '[::1]']
@@ -47,6 +49,8 @@ INSTALLED_APPS = [        # Список строк, обозначающих в
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'profiles',
+    'products',
 ]
 
 MIDDLEWARE = [        # Словарь, определяющий пакет, в котором модули миграции могут быть найдены для каждого приложения.
@@ -88,7 +92,7 @@ DATABASES = {
        "ENGINE": "django.db.backends.postgresql",
        "NAME": "django",
        "USER": "django",
-       "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+       "PASSWORD": os.getenv("POSTGRES_PASSWORD", "django"),
        "HOST": "localhost",
        "PORT": 5432,
    }
