@@ -22,13 +22,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv(key='SECRET_KEY')
+
 # "PASSWORD": os.getenv("POSTGRES_PASSWORD")
 # django-insecure-1-*iyy=rizxbq&*4$4$+sbe+3)8(oi@gu^6c^sqp4)^946=5=y'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = eval(os.getenv(key="DEBUG"))
+
+DEBUG = bool(os.getenv(key="DEBUG"))
 # DEBUG = True
-ALLOWED_HOSTS = [*] # Список строк, представляющих имена хоста / домена, которые может обслуживать этот сайт Django
+ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]'] # Список строк, представляющих имена хоста / домена, которые может обслуживать этот сайт Django
 """
+['.localhost', '127.0.0.1', '[::1]']
+
 Одной из основных функций режима отладки является отображение подробных страниц ошибок. 
 Если ваше приложение вызывает исключение, когда оно DEBUG есть True, Django отобразит подробную трассировку, 
 включая множество метаданных о вашей среде, таких как все текущие настройки Django (из settings.py)
