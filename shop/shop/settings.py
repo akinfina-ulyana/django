@@ -21,18 +21,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv(key='SECRET_KEY')
 # "PASSWORD": os.getenv("POSTGRES_PASSWORD")
 # django-insecure-1-*iyy=rizxbq&*4$4$+sbe+3)8(oi@gu^6c^sqp4)^946=5=y'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("True")
+DEBUG = eval(os.getenv(key="DEBUG"))
 # DEBUG = True
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [*] # Список строк, представляющих имена хоста / домена, которые может обслуживать этот сайт Django
+"""
+Одной из основных функций режима отладки является отображение подробных страниц ошибок. 
+Если ваше приложение вызывает исключение, когда оно DEBUG есть True, Django отобразит подробную трассировку, 
+включая множество метаданных о вашей среде, таких как все текущие настройки Django (из settings.py)
+"""
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = [        # Список строк, обозначающих все приложения, включенные в этой установке Django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE = [        # Словарь, определяющий пакет, в котором модули миграции могут быть найдены для каждого приложения.
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
