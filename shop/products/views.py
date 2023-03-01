@@ -12,3 +12,8 @@ def index(request):
     return HttpResponse("Shop index view")
 
 
+# from shop.models import Product
+#
+# first_product = Product.objects.create(
+#     title="First product", price=100
+# )
