@@ -18,11 +18,13 @@ from django.urls import path
 
 from products.views import index
 from profiles.views import profiles
+from purchase.views import purchase
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('profiles/', profiles, name="profiles"),
+    path('purchase/', purchase, name="purchase"),
 ]
 
