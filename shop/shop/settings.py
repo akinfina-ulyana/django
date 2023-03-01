@@ -51,6 +51,7 @@ INSTALLED_APPS = [        # Список строк, обозначающих в
     'django.contrib.staticfiles',
     'profiles',
     'products',
+    'purchase',
 ]
 
 MIDDLEWARE = [        # Словарь, определяющий пакет, в котором модули миграции могут быть найдены для каждого приложения.
