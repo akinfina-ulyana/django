@@ -21,7 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv(key='SECRET_KEY')
+# SECRET_KEY = os.getenv(key='SECRET_KEY')
+SECRET_KEY = 'my-secret-key'
 
 # "PASSWORD": os.getenv("POSTGRES_PASSWORD")
 # django-insecure-1-*iyy=rizxbq&*4$4$+sbe+3)8(oi@gu^6c^sqp4)^946=5=y'
@@ -52,7 +53,14 @@ INSTALLED_APPS = [        # Список строк, обозначающих в
     'profiles',
     'products',
     'purchase',
+    'crispy_forms',
+    'crispy_bootstrap5',
+
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
 
 MIDDLEWARE = [        # Словарь, определяющий пакет, в котором модули миграции могут быть найдены для каждого приложения.
     'django.middleware.security.SecurityMiddleware',
@@ -69,7 +77,7 @@ ROOT_URLCONF = 'shop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,7 +142,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+
+STATICFILES_FINDERS = [
+   "django.contrib.staticfiles.finders.FileSystemFinder",
+   "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+]
+
+STATICFILES_DIRS = []
+
+STATIC_ROOT = BASE_DIR / "static"
+STATIC_URL = "static/"
+
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
