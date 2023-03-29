@@ -51,6 +51,7 @@ INSTALLED_APPS = [        # Список строк, обозначающих в
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'profiles',
+    'rest_framework',
     'products',
     'purchase',
     'crispy_forms',
@@ -148,9 +149,9 @@ STATICFILES_FINDERS = [
    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
-STATICFILES_DIRS = []
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
-STATIC_ROOT = BASE_DIR / "static"
+STATIC_ROOT = None
 STATIC_URL = "static/"
 
 MEDIA_ROOT = BASE_DIR / "media"

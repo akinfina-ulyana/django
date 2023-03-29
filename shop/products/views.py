@@ -1,5 +1,7 @@
 import logging
 from django.http import HttpResponse
+from django.shortcuts import render
+
 from shop import settings
 from products.models import Product
 
@@ -21,10 +23,10 @@ def index(request):
     if purchases__count is not None:
         products = products.filter(purchases__count=purchases__count)
 
-    string = "<br>".join([str(p) for p in products])
-    return HttpResponse(string)
+    # string = "<br>".join([str(p) for p in products])
+    # return HttpResponse(string)
 
-
+    return render(request, "index.html", {"products": products})
 
 
 # from shop.models import Product
