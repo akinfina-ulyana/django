@@ -52,6 +52,7 @@ INSTALLED_APPS = [        # Список строк, обозначающих в
     'django.contrib.staticfiles',
     'profiles',
     'rest_framework',
+    "rest_framework.authtoken",
     'products',
     'purchase',
     'crispy_forms',
