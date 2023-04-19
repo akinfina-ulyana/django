@@ -28,7 +28,8 @@ def index(request):
     # return HttpResponse(string)
 
     return render(request, "index.html", {"products": products})
-
+    cache.set("products-view", response, 60 * 60)
+    return response
 
 # from shop.models import Product
 #
