@@ -57,8 +57,19 @@ INSTALLED_APPS = [        # Список строк, обозначающих в
     'purchase',
     'crispy_forms',
     'crispy_bootstrap5',
+    "django_rq",
 
 ]
+
+RQ_QUEUES = {
+   "default": {
+       "HOST": "localhost",
+       "PORT": 6379,
+       "DB": 0,
+       "DEFAULT_TIMEOUT": 360,
+   },
+}
+
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
@@ -101,10 +112,10 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 DATABASES = {
    "default": {
        "ENGINE": "django.db.backends.postgresql",
-       "NAME": "django",
-       "USER": "django",
+       "NAME": os.getenv("POSTGRES_NAME", "django"),
+       "USER": os.getenv("POSTGRES_USER", "django"),
        "PASSWORD": os.getenv("POSTGRES_PASSWORD", "django"),
-       "HOST": "localhost",
+       "HOST": os.getenv("POSTGRES_HOST", "localhost"),
        "PORT": 5432,
    }
 }
@@ -192,12 +203,15 @@ LOGGING = {
 
 MY_CUSTOM_VARIABLE = os.getenv("MY_CUSTOM_VARIABLE", None)
 
+REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+
 CACHES = {
    "default": {
        "BACKEND": "django.core.cache.backends.redis.RedisCache",
-       "LOCATION": "redis://127.0.0.1:6379",
+       "LOCATION": f"redis://{REDIS_HOST}:6379",
    }
 }
+
 
 
 

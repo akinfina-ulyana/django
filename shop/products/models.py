@@ -8,8 +8,6 @@ COLOR_CHOICES = (
 )
 
 
-
-
 class Product(models.Model):
     external_id = models.CharField(max_length=255, blank=True, null=True)
     title = models.CharField(max_length=255)

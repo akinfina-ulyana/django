@@ -8,15 +8,23 @@ services:
      - POSTGRES_USER=django
      - POSTGRES_PASSWORD=django
 
+ redis:
+   image: redis:latest
+
  django:
    image: ulyana2211/django:latest
    ports:
      - "8000:8000"
    volumes:
-     - ./:/app/
+     - ./shop/:/app/
    depends_on:
      - postgres
+     - redis
    environment:
-     - DATABASE_HOST=postgres
+     - POSTGRES_NAME=django
+     - POSTGRES_USER=django
+     - POSTGRES_PASS=django
+     - POSTGRES_HOST=postgres
+     - REDIS_HOST=redis
    command: |
      python manage.py runserver 0.0.0.0:8000
