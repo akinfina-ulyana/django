@@ -61,9 +61,18 @@ INSTALLED_APPS = [        # Список строк, обозначающих в
 
 ]
 
+REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+
+CACHES = {
+   "default": {
+       "BACKEND": "django.core.cache.backends.redis.RedisCache",
+       "LOCATION": f"redis://{REDIS_HOST}:6379",
+   }
+}
+
 RQ_QUEUES = {
    "default": {
-       "HOST": "localhost",
+       "HOST": REDIS_HOST,
        "PORT": 6379,
        "DB": 0,
        "DEFAULT_TIMEOUT": 360,
@@ -203,14 +212,7 @@ LOGGING = {
 
 MY_CUSTOM_VARIABLE = os.getenv("MY_CUSTOM_VARIABLE", None)
 
-REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
 
-CACHES = {
-   "default": {
-       "BACKEND": "django.core.cache.backends.redis.RedisCache",
-       "LOCATION": f"redis://{REDIS_HOST}:6379",
-   }
-}
 
 
 

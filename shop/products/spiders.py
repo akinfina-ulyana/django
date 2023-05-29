@@ -6,7 +6,11 @@ class OmaSpider(scrapy.Spider):
     allowed_domains = ["www.oma.by"]
     start_urls = ["https://www.oma.by/elektroinstrument-c"]
 
+    current_page = 0
+
     def parse(self, response, **kwargs):
+        self.current_page +=1
+
         for product in response.css(".catalog-grid .product-item"):
             image_div = product.css(".product-item_img-box .image-filler:first-child")
             image_name = f"https://www.oma.by{image_div.attrib.get('data-img-src')}"
@@ -22,12 +26,6 @@ class OmaSpider(scrapy.Spider):
 
         next_page = response.css(".page-nav_box .btn__page-nav:last-child::attr(href)").get()
         if next_page is not None:
+            if self.current_page <= 5:
+                return
             yield response.follow(next_page, callback=self.parse)
-
-
-
-
-
-
-
-

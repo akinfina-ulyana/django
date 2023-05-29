@@ -28,3 +28,20 @@ services:
      - REDIS_HOST=redis
    command: |
      python manage.py runserver 0.0.0.0:8000
+
+ worker:
+   image: ulyana2211/django:latest
+
+   volumes:
+     - ./shop/:/app/
+   depends_on:
+     - postgres
+     - redis
+   environment:
+     - POSTGRES_NAME=django
+     - POSTGRES_USER=django
+     - POSTGRES_PASS=django
+     - POSTGRES_HOST=postgres
+     - REDIS_HOST=redis
+   command: |
+     python manage.py runserver rqworker
