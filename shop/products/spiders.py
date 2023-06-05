@@ -9,7 +9,7 @@ class OmaSpider(scrapy.Spider):
     current_page = 0
 
     def parse(self, response, **kwargs):
-        self.current_page +=1
+        self.current_page += 1
 
         for product in response.css(".catalog-grid .product-item"):
             image_div = product.css(".product-item_img-box .image-filler:first-child")
@@ -24,7 +24,9 @@ class OmaSpider(scrapy.Spider):
             }
             yield data
 
-        next_page = response.css(".page-nav_box .btn__page-nav:last-child::attr(href)").get()
+        next_page = response.css(
+            ".page-nav_box .btn__page-nav:last-child::attr(href)"
+        ).get()
         if next_page is not None:
             if self.current_page <= 5:
                 return

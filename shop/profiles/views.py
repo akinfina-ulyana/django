@@ -43,37 +43,17 @@ def login_view(request):
             )
 
             if user is None:
-                return HttpResponse('BadRequest', status=400)
+                return HttpResponse("BadRequest", status=400)
             login(request, user)
             return redirect("index")
     else:
         form = LoginForm()
     return render(request, "login.html", {"form": form})
 
+
 def logout_view(request):
     logout(request)
     return redirect("index")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # import logging
@@ -109,5 +89,3 @@ def logout_view(request):
 #     return render(request, "register.html", {"form":form})
 #
 #
-
-

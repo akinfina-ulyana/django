@@ -1,6 +1,7 @@
 import pytest
 from rest_framework.test import APIClient
 
+
 @pytest.mark.django_db
 class TestProductApi:
     def setup_method(self):

@@ -1,38 +1,33 @@
-
 import logging
-from django.http import HttpResponse
-from django.shortcuts import render
 
-from shop import settings
+from django.core.cache import cache
+from django.core.paginator import Paginator
+from django.db.models import Q
+from django.shortcuts import render
 from products.models import Product
 
 logger = logging.getLogger(__name__)
 
 
 def index(request):
-    # if request.GET.get("param"):
-    #     logger.info(f"My param = {request.GET.get('param')}")
-    #     logger.info(f"My custom variable = {settings.MY_CUSTOM_VARIABLE}")
+    title = request.GET.get("title")
+    purchases__count = request.GET.get("purchases__count")
+
+    result = cache.get(f"products-view-{title}-{purchases__count}-{request.user.id}")
+    if result is not None:
+        return result
 
     products = Product.objects.all()
 
-    title = request.GET.get("title")
     if title is not None:
-        products = products.filter(title__contains=title)
+        products = products.filter(
+            Q(title__icontains=title) | Q(description__icontains=title)
+        )
 
-    purchases__count = request.GET.get("purchases__count")
     if purchases__count is not None:
         products = products.filter(purchases__count=purchases__count)
 
-    # string = "<br>".join([str(p) for p in products])
-    # return HttpResponse(string)
-
+    page_number = request.GET.get("page")
+    paginator = Paginator(products, 12)
+    products = paginator.get_page(page_number)
     return render(request, "index.html", {"products": products})
-    cache.set("products-view", response, 60 * 60)
-    return response
-
-# from shop.models import Product
-#
-# first_product = Product.objects.create(
-#     title="First product", price=100
-# )

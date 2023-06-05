@@ -1,6 +1,7 @@
 import pytest
 from django.test.client import Client
 
+
 @pytest.mark.django_db
 class TestIndex:
     def setup_method(self):

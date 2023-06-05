@@ -12,12 +12,12 @@ class TestRegister:
         response = self.client.get("/register/")
         assert response.status_code == 200
 
-        response = self.client.post("/register/", data={
-            "title": "test",
-            "color": "test",
-            "price": "test@test.com",
-
-            }, follow=True)
-
-
-
+        response = self.client.post(
+            "/register/",
+            data={
+                "title": "test",
+                "color": "test",
+                "price": "test@test.com",
+            },
+            follow=True,
+        )

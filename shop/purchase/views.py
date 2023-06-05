@@ -8,11 +8,3 @@ def purchase(request):
     if request.GET.get("param"):
         logger.info(f"My param = {request.GET.get('param')}")
     return HttpResponse("Shop purchases")
-
-
-
-
-
-
-
-

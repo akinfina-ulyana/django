@@ -23,15 +23,15 @@ from purchase.views import purchase
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
     path("api/", include("api.urls", namespace="api")),
-        path("api/auth/", include("rest_framework.urls", namespace="rest_framework")),
-    path('', index, name='index'),
-    path('profiles/', profiles, name="profiles"),
-    path('purchase/', purchase, name="purchase"),
-    path('register/', register, name="register"),
-    path('login/', login_view, name="login"),
-    path('logout/', logout_view, name="logout"),
+    path("api/auth/", include("rest_framework.urls", namespace="rest_framework")),
+    path("", index, name="index"),
+    path("profiles/", profiles, name="profiles"),
+    path("purchase/", purchase, name="purchase"),
+    path("register/", register, name="register"),
+    path("login/", login_view, name="login"),
+    path("logout/", logout_view, name="logout"),
 ]
 
 if settings.DEBUG:
