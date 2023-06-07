@@ -83,7 +83,7 @@ RQ_QUEUES = {
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-MIDDLEWARE = [  # Словарь, определяющий пакет, в котором модули миграции могут быть найдены для каждого приложения.
+MIDDLEWARE = [ 
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
