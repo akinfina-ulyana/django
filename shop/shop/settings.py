@@ -32,9 +32,7 @@ SECRET_KEY = "my-secret-key"
 
 # DEBUG = False if os.getenv("MY_DEBUG_VARIABLE") == 'False' else True
 DEBUG = False
-ALLOWED_HOSTS = [
-    "*"
-]  # Список строк, представляющих имена хоста / домена, которые может обслуживать этот сайт Django
+ALLOWED_HOSTS = ["*"]
 """
 ['.localhost', '127.0.0.1', '[::1]']
 
