@@ -1,6 +1,6 @@
-from django.contrib import admin
-
 from purchase.models import Purchase
+
+from django.contrib import admin
 
 
 @admin.register(Purchase)

@@ -1,9 +1,8 @@
-from django.db.models import Count, Sum
-from rest_framework import viewsets
-
-
 from api.products.serializers import ProductModelSerializer
 from products.models import Product
+from rest_framework import viewsets
+
+from django.db.models import Count, Sum
 
 
 class ProductViewSet(viewsets.ModelViewSet):

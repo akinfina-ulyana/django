@@ -1,7 +1,8 @@
-from django.urls import include, path
-from rest_framework import routers
 from api.products.views import ProductViewSet
 from api.users.views import RegisterView
+from rest_framework import routers
+
+from django.urls import include, path
 
 app_name = "api"
 

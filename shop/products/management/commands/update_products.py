@@ -1,10 +1,10 @@
-import requests
-from django_rq import job
-from django.core.management.base import BaseCommand
-
 from decimal import Decimal
 
+import requests
+from django_rq import job
 from products.models import Product
+
+from django.core.management.base import BaseCommand
 
 
 @job

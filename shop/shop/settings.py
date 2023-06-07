@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,9 +35,8 @@ DEBUG = False
 ALLOWED_HOSTS = ["*"]
 """
 ['.localhost', '127.0.0.1', '[::1]']
-
-Одной из основных функций режима отладки является отображение подробных страниц ошибок. 
-Если ваше приложение вызывает исключение, когда оно DEBUG есть True, Django отобразит подробную трассировку, 
+Одной из основных функций режима отладки является отображение подробных страниц ошибок.
+Если ваше приложение вызывает исключение, когда оно DEBUG есть True, Django отобразит подробную трассировку,
 включая множество метаданных о вашей среде, таких как все текущие настройки Django (из settings.py)
 """
 
@@ -83,7 +82,7 @@ RQ_QUEUES = {
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-MIDDLEWARE = [ 
+MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",

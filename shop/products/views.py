@@ -1,10 +1,11 @@
 import logging
 
+from products.models import Product
+
 from django.core.cache import cache
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render
-from products.models import Product
 
 logger = logging.getLogger(__name__)
 

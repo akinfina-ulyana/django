@@ -1,13 +1,13 @@
 import requests
-from django.conf import settings
-from django.core.management.base import BaseCommand
-from scrapy import signals
-from scrapy.signalmanager import dispatcher
-
 from products.models import Product
 from products.spiders import OmaSpider
+from scrapy import signals
 from scrapy.crawler import CrawlerProcess
+from scrapy.signalmanager import dispatcher
 from scrapy.utils.project import get_project_settings
+
+from django.conf import settings
+from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):

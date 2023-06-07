@@ -1,7 +1,7 @@
-from django.contrib import admin
-
 from products.models import Product
 from purchase.models import Purchase
+
+from django.contrib import admin
 
 
 class PurchaseInline(admin.TabularInline):
